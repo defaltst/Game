@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conecta 4</title>
+    <link rel="stylesheet" href="game.css">
+    <script src="game.js"></script>
+</head>
+<body>
+    <header>
+        <div id="p1"><p>Player1: </p> <output id="out-p1">0</output></div>
+        <div id="p2"><p>Player2: </p> <output id="out-p2">0</output></div>
+    </header>
+
+    <div class="container">
+        <table id="tablero">
+            <tr>
+                <td id="1-1"></td>
+                <td id="1-2"></td>
+                <td id="1-3"></td>
+                <td id="1-4"></td>
+                <td id="1-5"></td>
+                <td id="1-6"></td>
+            </tr>
+            <tr>
+                <td id="2-1"></td>
+                <td id="2-2"></td>
+                <td id="2-3"></td>
+                <td id="2-4"></td>
+                <td id="2-5"></td>
+                <td id="2-6"></td>
+            </tr>
+            <tr>
+                <td id="3-1"></td>
+                <td id="3-2"></td>
+                <td id="3-3"></td>
+                <td id="3-4"></td>
+                <td id="3-5"></td>
+                <td id="3-6"></td>
+            </tr>
+            <tr>
+                <td id="4-1"></td>
+                <td id="4-2"></td>
+                <td id="4-3"></td>
+                <td id="4-4"></td>
+                <td id="4-5"></td>
+                <td id="4-6"></td>
+            </tr>
+            <tr>
+                <td id="5-1"></td>
+                <td id="5-2"></td>
+                <td id="5-3"></td>
+                <td id="5-4"></td>
+                <td id="5-5"></td>
+                <td id="5-6"></td>
+            </tr>
+            <tr>
+                <td id="6-1"></td>
+                <td id="6-2"></td>
+                <td id="6-3"></td>
+                <td id="6-4"></td>
+                <td id="6-5"></td>
+                <td id="6-6"></td>
+            </tr>
+            <tr>
+                <td id="7-1"></td>
+                <td id="7-2"></td>
+                <td id="7-3"></td>
+                <td id="7-4"></td>
+                <td id="7-5"></td>
+                <td id="7-6"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="container"><button id="rest">Restart</button>
+        <button id="clean">Clean</button>
+    </div>
+
+    <script>
+    var mark = [],cord = [],col = [],pla = 0,con_p1 = 0,con_p2 = 0;
+    refrescar();
+    limpiar();
+    
+    update();
+    for(i = 1; i <= 7; i++){
+        mark[i] = [];
+        cord[i] = [];
+        col[i] = []
+        for(j = 1; j <= 6; j++){
+            mark[i][j] = 0;
+            let aux = String(i)+"-"+String(j);
+            cord[i][j] = document.getElementById(aux);
+            col[i][j] = '.';
+        }
+    }
+    
+    cord[1][1].addEventListener('click', function(){
+        make(1);
+    });
+    cord[1][2].addEventListener('click', function(){
+        make(2);
+    });
+    cord[1][3].addEventListener('click', function(){
+        make(3);
+    });
+    cord[1][4].addEventListener('click', function(){
+        make(4);
+    });
+    cord[1][5].addEventListener('click', function(){
+        make(5);
+    });
+    cord[1][6].addEventListener('click', function(){
+        make(6);
+    });
+    cord[2][1].addEventListener('click', function(){
+        make(1);
+    });
+    cord[2][2].addEventListener('click', function(){
+        make(2);
+    });
+    cord[2][3].addEventListener('click', function(){
+        make(3);
+    });
+    cord[2][4].addEventListener('click', function(){
+        make(4);
+    });
+    cord[2][5].addEventListener('click', function(){
+        make(5);
+    });
+    cord[2][6].addEventListener('click', function(){
+        make(6);
+    });
+    cord[3][1].addEventListener('click', function(){
+        make(1);
+    });
+    cord[3][2].addEventListener('click', function(){
+        make(2);
+    });
+    cord[3][3].addEventListener('click', function(){
+        make(3);
+    });
+    cord[3][4].addEventListener('click', function(){
+        make(4);
+    });
+    cord[3][5].addEventListener('click', function(){
+        make(5);
+    });
+    cord[3][6].addEventListener('click', function(){
+        make(6);
+    });
+    cord[4][1].addEventListener('click', function(){
+        make(1);
+    });
+    cord[4][2].addEventListener('click', function(){
+        make(2);
+    });
+    cord[4][3].addEventListener('click', function(){
+        make(3);
+    });
+    cord[4][4].addEventListener('click', function(){
+        make(4);
+    });
+    cord[4][5].addEventListener('click', function(){
+        make(5);
+    });
+    cord[4][6].addEventListener('click', function(){
+        make(6);
+    });
+    cord[5][1].addEventListener('click', function(){
+        make(1);
+    });
+    cord[5][2].addEventListener('click', function(){
+        make(2);
+    });
+    cord[5][3].addEventListener('click', function(){
+        make(3);
+    });
+    cord[5][4].addEventListener('click', function(){
+        make(4);
+    });
+    cord[5][5].addEventListener('click', function(){
+        make(5);    
+    });
+    cord[5][6].addEventListener('click', function(){
+        make(6);
+    });
+    cord[6][1].addEventListener('click', function(){
+        make(1);
+    });
+    cord[6][2].addEventListener('click', function(){
+        make(2);
+    });
+    cord[6][3].addEventListener('click', function(){
+        make(3);
+    });
+    cord[6][4].addEventListener('click', function(){
+        make(4);
+    });
+    cord[6][5].addEventListener('click', function(){
+        make(5);
+    });
+    cord[6][6].addEventListener('click', function(){
+        make(6);
+    });
+    cord[7][1].addEventListener('click', function(){
+        make(1);
+    });
+    cord[7][2].addEventListener('click', function(){
+        make(2);
+    });
+    cord[7][3].addEventListener('click', function(){
+        make(3);
+    });
+    cord[7][4].addEventListener('click', function(){
+        make(4);
+    });
+    cord[7][5].addEventListener('click', function(){
+        make(5);
+    });
+    cord[7][6].addEventListener('click', function(){
+        make(6);
+    });
+    </script>
+</body>
+</html>
